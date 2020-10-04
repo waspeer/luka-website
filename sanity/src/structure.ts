@@ -9,9 +9,10 @@ export default () =>
       S.documentListItem().icon(GiBabyFace).id('aboutLuka').schemaType('aboutLuka'),
       S.documentListItem()
         .icon(GiSpermWhale)
-        .id('landing')
-        .schemaType('landing')
-        .title('Landing Page'),
+        .id('websiteSettings')
+        .schemaType('websiteSettings')
+        .title('Website Settings'),
       S.documentTypeListItem('news').icon(GiPartyFlags),
       S.documentListItem().id('team').schemaType('team').icon(RiTeamFill).title('Team'),
+      // S.documentTypeListItem('page'),
     ]);

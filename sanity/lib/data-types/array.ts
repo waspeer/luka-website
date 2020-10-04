@@ -29,7 +29,7 @@ export interface ArrayType<T extends string = ''> extends DataType {
   /**
    * Defines which types are allowed as members of the array.
    */
-  of?: Field<T>[];
+  of: Field<T>[];
 
   options?: {
     /**

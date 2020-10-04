@@ -1,17 +1,11 @@
 import { GiAcousticMegaphone, GiSpermWhale } from 'react-icons/gi';
 import { DocumentType } from '../../lib/data-types';
 
-export const Landing: DocumentType<'button'> = {
-  name: 'landing',
-  title: 'Landing Page',
+export const WebsiteSettings: DocumentType<'button' | 'page'> = {
+  name: 'websiteSettings',
+  title: 'Website Settings',
   type: 'document',
   fields: [
-    {
-      hidden: true,
-      name: 'name',
-      title: 'Name',
-      type: 'string',
-    },
     {
       name: 'mainImage',
       title: 'Main Image',
@@ -21,6 +15,12 @@ export const Landing: DocumentType<'button'> = {
       },
     },
     {
+      name: 'pages',
+      title: 'Pages',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'page' }] }],
+    },
+    {
       name: 'ctas',
       title: 'Call to Actions',
       type: 'array',
@@ -28,6 +28,6 @@ export const Landing: DocumentType<'button'> = {
     },
   ],
   preview: {
-    prepare: () => ({ media: GiSpermWhale }),
+    prepare: () => ({ title: 'Website Settings', media: GiSpermWhale }),
   },
 };
