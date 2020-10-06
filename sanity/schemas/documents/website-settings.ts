@@ -1,4 +1,5 @@
 import { GiAcousticMegaphone, GiSpermWhale } from 'react-icons/gi';
+
 import { DocumentType } from '../../lib/data-types';
 
 export const WebsiteSettings: DocumentType<'button' | 'page'> = {

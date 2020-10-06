@@ -3,6 +3,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { FaQuestion } from 'react-icons/fa';
+
 import { ObjectType } from '../../lib/data-types';
 import { IconPicker } from '../../src/input-components/icon-picker';
 

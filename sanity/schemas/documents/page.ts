@@ -1,5 +1,6 @@
-import { DocumentType } from '../../lib/data-types';
 import { BsFileText, BsArrowUpRight } from 'react-icons/bs';
+
+import { DocumentType } from '../../lib/data-types';
 
 export const Page: DocumentType = {
   name: 'page',
