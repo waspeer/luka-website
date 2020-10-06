@@ -14,6 +14,10 @@
     "sanity"
   ],
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@reach/combobox": "^0.11.2",
     "@sanity/base": "^1.150.8",
     "@sanity/cli": "^1.150.7",
     "@sanity/components": "^1.150.8",

@@ -12,6 +12,14 @@ export const Page: DocumentType = {
       type: 'string',
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+      },
+    },
+    {
       name: 'external',
       title: 'Is external',
       type: 'boolean',
