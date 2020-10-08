@@ -20,7 +20,7 @@ export function MusicSection({ id, releases }: Props) {
       <ul>
         {releases.map(({ image, name, url }) => (
           <li key={`release-${name}`}>
-            <a href={url} title={name}>
+            <a href={url} target="_blank" rel="noreferrer" title={name}>
               <img alt={name} src={imageUrlFor(image).width(400).height(400).url()!} />
             </a>
           </li>

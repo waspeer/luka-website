@@ -19,7 +19,7 @@ export function LandingSection({ ctas, mainImage }: Props) {
 
       <div className={s.ctas}>
         {ctas.map(({ text, url }) => (
-          <a href={url} key={`cta-${url}`}>
+          <a href={url} target="_blank" rel="noreferrer" key={`cta-${url}`}>
             {text}
           </a>
         ))}

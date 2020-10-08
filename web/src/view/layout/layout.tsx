@@ -75,7 +75,7 @@ function SocialLink({ iconName, name, url }: SocialLinkType) {
   const Icon = icons[iconName] ?? FaGlobeEurope;
 
   return (
-    <a href={url} title={name}>
+    <a href={url} target="_blank" rel="noreferrer" title={name}>
       <Icon />
     </a>
   );
