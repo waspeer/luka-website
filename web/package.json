@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "yarn gen:icon-library && next build",
+    "build": "yarn gen:icon-library && next build && next export",
     "dev": "next dev",
-    "gen:icon-library": "bin/generate-icon-library",
+    "gen:icon-library": "node bin/generate-icon-library",
     "start": "next start"
   },
   "dependencies": {

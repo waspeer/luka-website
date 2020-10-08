@@ -5,12 +5,12 @@ const icons = require('react-icons/fa');
 const path = require('path');
 const prettier = require('prettier');
 
-require('dotenv').config({ path: path.resolve(process.cwd(), '.env.local') });
-require('ts-node').register({ compilerOptions: { module: 'CommonJS' } });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
+require('ts-node').register({ project: path.resolve(__dirname, '../tsconfig.json') });
 
 const { getSocialLinks } = require('../src/model/sanity/sanity-client');
 
-const LIBRARY_PATH = path.resolve(process.cwd(), 'src/lib/icons.ts');
+const LIBRARY_PATH = path.resolve(__dirname, '../src/lib/icons.ts');
 
 (async () => {
   const socialLinks = await getSocialLinks();
