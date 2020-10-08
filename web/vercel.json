@@ -1,4 +1,4 @@
 {
   "version": 2,
-  "routes": [{ "src": "/admin", "dest": "https://admin.lisaluka.com" }]
+  "redirects": [{ "source": "/admin", "destination": "https://admin.lisaluka.com" }]
 }
