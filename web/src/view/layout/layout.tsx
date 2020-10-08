@@ -1,11 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from '@sindresorhus/class-names';
-import React, { useState } from 'react';
-
-import { PageInfo, SocialLink as SocialLinkType } from '../../model/types';
-import { Typography } from '../components/typography';
+import { useState } from 'react';
+import { FaGlobeEurope } from 'react-icons/fa';
 
 import s from './layout.module.css';
+
+import { icons } from '~lib/icons';
+import { PageInfo, SocialLink as SocialLinkType } from '~model/types';
+import { Typography } from '~view/components/typography';
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -15,6 +16,10 @@ interface LayoutProps {
 
 export const Layout = ({ children, pages, socialLinks }: LayoutProps) => {
   const [menuOpened, setMenuOpened] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpened(false);
+  };
 
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
@@ -41,7 +46,9 @@ export const Layout = ({ children, pages, socialLinks }: LayoutProps) => {
               .flatMap(({ external, name, title }) => [
                 <li key={`navItem-${name}`}>
                   <Typography.Underlined>
-                    <a href={`${external ? '/' : '#'}${name}`}>{title}</a>
+                    <a href={`${external ? '/' : '#'}${name}`} onClick={closeMenu}>
+                      {title}
+                    </a>
                   </Typography.Underlined>
                 </li>,
                 <li key={`navItem-${name}-divider`} className={s.divider} />,
@@ -50,11 +57,9 @@ export const Layout = ({ children, pages, socialLinks }: LayoutProps) => {
           </ul>
 
           <ul className={s.socials}>
-            {socialLinks.map(({ iconName, name, url }) => (
-              <li key={`socialLink-${name}`}>
-                <a href={url} title={name}>
-                  <FontAwesomeIcon icon={['fab', iconName]} />
-                </a>
+            {socialLinks.map((link) => (
+              <li key={`socialLink-${link.name}`}>
+                <SocialLink {...link} />
               </li>
             ))}
           </ul>
@@ -65,3 +70,13 @@ export const Layout = ({ children, pages, socialLinks }: LayoutProps) => {
     </div>
   );
 };
+
+function SocialLink({ iconName, name, url }: SocialLinkType) {
+  const Icon = icons[iconName] ?? FaGlobeEurope;
+
+  return (
+    <a href={url} title={name}>
+      <Icon />
+    </a>
+  );
+}

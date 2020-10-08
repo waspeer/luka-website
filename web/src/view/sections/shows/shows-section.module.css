@@ -1,0 +1,5 @@
+.showsSection {
+  & div {
+    margin-top: -40px;
+  }
+}

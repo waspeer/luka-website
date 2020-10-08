@@ -1,0 +1,13 @@
+.newsSection {
+  & section {
+    @apply leading-6;
+
+    &:not(:last-child) {
+      @apply mb-2;
+    }
+
+    & h3 {
+      @apply font-heading;
+    }
+  }
+}

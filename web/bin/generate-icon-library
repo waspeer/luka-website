@@ -1,0 +1,32 @@
+#! /usr/local/bin/node
+
+const fs = require('fs');
+const icons = require('react-icons/fa');
+const path = require('path');
+const prettier = require('prettier');
+
+require('dotenv').config({ path: path.resolve(process.cwd(), '.env.local') });
+require('ts-node').register({ compilerOptions: { module: 'CommonJS' } });
+
+const { getSocialLinks } = require('../src/model/sanity/sanity-client');
+
+const LIBRARY_PATH = path.resolve(process.cwd(), 'src/lib/icons.ts');
+
+(async () => {
+  const socialLinks = await getSocialLinks();
+  const iconNames = socialLinks
+    .map(({ iconName }) => iconName)
+    .filter((iconName) => !!icons[iconName])
+    .join(', ');
+
+  const library = `
+    import { ${iconNames} } from 'react-icons/fa';
+
+    export const icons = { ${iconNames} }
+  `;
+
+  fs.writeFileSync(
+    LIBRARY_PATH,
+    prettier ? prettier.format(library, { parser: 'typescript' }) : library,
+  );
+})();

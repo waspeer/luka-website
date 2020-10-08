@@ -1,7 +1,7 @@
 import classNames from '@sindresorhus/class-names';
 import React from 'react';
 
-import styles from './typography.module.css';
+import s from './typography.module.css';
 
 /**
  * UNDERLINED
@@ -16,7 +16,7 @@ interface UnderlinedProps {
 const Underlined = ({ children }: UnderlinedProps): JSX.Element => {
   const underlinedChildren = React.Children.map(children, (child) =>
     React.cloneElement(child, {
-      className: classNames(child.props.className, styles.underlined),
+      className: classNames(child.props.className, s.underlined),
     }),
   );
 
@@ -52,12 +52,21 @@ const Title = ({ children, className, level = 1 }: TitleProps) => {
 
   return (
     <Underlined>
-      <Heading className={classNames(styles.heading, className)}>{children}</Heading>
+      <Heading className={classNames(s.heading, className)}>{children}</Heading>
     </Underlined>
   );
 };
 
+/**
+ * SECTION TITLE
+ * same as title, but with additional styling
+ */
+
+function SectionTitle({ className, level = 2, ...otherProps }: TitleProps) {
+  return <Title {...otherProps} className={classNames(className, s.sectionTitle)} level={level} />;
+}
+
 /* ------- */
 /** EXPORT */
 
-export const Typography = { Title, Underlined };
+export const Typography = { SectionTitle, Title, Underlined };

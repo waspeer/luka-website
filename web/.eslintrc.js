@@ -23,6 +23,8 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-undef': 'off',
     'no-use-before-define': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/destructuring-assignment': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
   },

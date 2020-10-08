@@ -13,9 +13,11 @@
   @apply grid items-center;
   @apply transition-all;
   @apply px-4;
+  @apply z-10;
 
   grid-template-columns: 1fr 1fr;
   grid-template-rows: var(--header-size) 1fr;
+  height: var(--header-size);
   transition-duration: var(--transition-duration);
 
   &.menuOpened {
@@ -39,7 +41,7 @@
 
   & h1 {
     @apply justify-self-start;
-    @apply text-3xl leading-8;
+    @apply text-3xl;
     top: -3px;
   }
 
@@ -120,7 +122,7 @@
       top: 100%;
 
       & li:not(:last-child) {
-        @apply mb-4;
+        @apply mb-6;
       }
     }
 
@@ -152,5 +154,17 @@
 
   @screen md {
     @apply p-0;
+  }
+
+  & section {
+    @apply text-sm;
+    @apply mb-16;
+
+    &::before {
+      content: '';
+      display: block;
+      height: var(--header-size);
+      margin-top: calc(var(--header-size) * -1);
+    }
   }
 }

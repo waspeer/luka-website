@@ -24,6 +24,15 @@
 
 .heading {
   @apply relative;
-  @apply inline-block;
   @apply font-heading;
+
+  line-height: 1.1;
+  width: min-content;
+}
+
+/** SECTION TITLE */
+
+.sectionTitle {
+  @apply text-2xl;
+  @apply mb-2 mx-auto;
 }

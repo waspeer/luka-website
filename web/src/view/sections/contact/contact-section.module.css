@@ -1,0 +1,17 @@
+.contactSection {
+  & ul {
+    @apply text-center;
+
+    & svg {
+      @apply inline-block;
+      @apply align-middle;
+      @apply mr-2;
+
+      margin-top: -2px;
+    }
+
+    & a {
+      @apply text-turquoise underline;
+    }
+  }
+}
