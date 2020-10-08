@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/poetic/config/typescript/tsconfig.json",
+  "extends": "../node_modules/poetic/config/typescript/tsconfig.json",
   "include": ["./node_modules/@sanity/base/types/**/*.ts", "./**/*.ts", "./**/*.tsx"],
   "compilerOptions": {
     "allowJs": true,

@@ -24,6 +24,12 @@ export const Person: ObjectType = {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'role',
+      title: 'Role',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       fieldset: 'contact',
       name: 'email',
       title: 'Email',
@@ -31,4 +37,15 @@ export const Person: ObjectType = {
       validation: (Rule) => Rule.required().email(),
     },
   ],
+  preview: {
+    select: {
+      email: 'email',
+      role: 'role',
+      title: 'firstName',
+    },
+    prepare: ({ email, role, title }) => ({
+      title,
+      subtitle: `${role}, ${email}`,
+    }),
+  },
 };

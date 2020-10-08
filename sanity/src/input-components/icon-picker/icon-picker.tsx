@@ -1,5 +1,3 @@
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Combobox,
   ComboboxInput,
@@ -11,6 +9,7 @@ import '@reach/combobox/styles.css';
 import FormField from 'part:@sanity/components/formfields/default';
 import PatchEvent, { set, unset } from 'part:@sanity/form-builder/patch-event';
 import React, { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import * as icons from 'react-icons/fa';
 
 import styles from './icon-picker.css';
 
@@ -21,7 +20,6 @@ interface IconPickerProps {
 }
 
 const createPatchFrom = (value: string) => PatchEvent.from(value === '' ? unset() : set(value));
-const iconDefinitions = Object.values(fab);
 
 const getResults = (term: string) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -29,7 +27,7 @@ const getResults = (term: string) => {
     () =>
       term.trim() === ''
         ? null
-        : Object.values(iconDefinitions).filter(({ iconName }) => {
+        : Object.entries(icons).filter(([iconName]) => {
             const regex = new RegExp(term, 'i');
 
             return iconName !== term && regex.test(iconName);
@@ -40,14 +38,15 @@ const getResults = (term: string) => {
 
 export const IconPicker = forwardRef(({ type, value, onChange: pushChange }: IconPickerProps) => {
   const [term, setTerm] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const results = getResults(term);
+  const SelectedIcon = icons[value as keyof typeof icons];
 
   const handleChange = (newValue: string) => {
     setTerm('');
     pushChange(createPatchFrom(newValue));
   };
-  const results = getResults(term);
-  const selectedIconDefinition = iconDefinitions.find(({ iconName }) => iconName === value);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -64,9 +63,9 @@ export const IconPicker = forwardRef(({ type, value, onChange: pushChange }: Ico
           <ComboboxPopover portal={false}>
             {results.length ? (
               <ComboboxList>
-                {results.slice(0, 10).map((definition) => (
-                  <ComboboxOption key={definition.iconName} value={definition.iconName}>
-                    <FontAwesomeIcon icon={definition} style={{ fontSize: '1.1rem' }} />
+                {results.slice(0, 10).map(([iconName, Icon]) => (
+                  <ComboboxOption key={iconName} value={iconName}>
+                    <Icon style={{ fontSize: '1.1rem' }} />
                   </ComboboxOption>
                 ))}
               </ComboboxList>
@@ -77,9 +76,9 @@ export const IconPicker = forwardRef(({ type, value, onChange: pushChange }: Ico
         )}
       </Combobox>
 
-      {selectedIconDefinition && (
+      {SelectedIcon && (
         <span className={styles.selection}>
-          Selected icon: <FontAwesomeIcon icon={selectedIconDefinition} />
+          Selected icon: <SelectedIcon />
         </span>
       )}
     </FormField>

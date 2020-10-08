@@ -1,13 +1,8 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { FaQuestion } from 'react-icons/fa';
+import * as icons from 'react-icons/fa';
 
 import { ObjectType } from '../../lib/data-types';
 import { IconPicker } from '../../src/input-components/icon-picker';
-
-library.add(fab);
 
 export const LinkWithIcon: ObjectType = {
   name: 'linkWithIcon',
@@ -39,9 +34,14 @@ export const LinkWithIcon: ObjectType = {
       iconName: 'icon',
       title: 'name',
     },
-    prepare: ({ iconName, title }) => ({
-      media: iconName ? <FontAwesomeIcon icon={['fab', iconName]} /> : FaQuestion,
-      title,
-    }),
+    prepare: ({ iconName, title }) => {
+      const Icon = icons[iconName as keyof typeof icons];
+      const QuestionMark = icons.FaQuestion;
+
+      return {
+        media: Icon ? <Icon /> : <QuestionMark />,
+        title,
+      };
+    },
   },
 };

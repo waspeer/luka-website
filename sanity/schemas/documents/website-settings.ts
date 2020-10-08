@@ -16,10 +16,17 @@ export const WebsiteSettings: DocumentType<'button' | 'page'> = {
       },
     },
     {
+      description: 'A short description that will be shown on for example Google / Facebook / etc.',
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    },
+    {
       name: 'pages',
       title: 'Pages',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'page' }] }],
+      validation: (Rule) => Rule.unique(),
     },
     {
       name: 'ctas',
