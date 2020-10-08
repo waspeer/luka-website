@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "yarn gen:icon-library && next build && next export",
+    "build": "yarn gen:icon-library && next build",
     "dev": "next dev",
     "gen:icon-library": "node bin/generate-icon-library",
     "start": "next start"
