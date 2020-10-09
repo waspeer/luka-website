@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder';
-import { GiSpermWhale, GiPartyFlags, GiBabyFace } from 'react-icons/gi';
+import { GiSpermWhale, GiPartyFlags, GiBabyFace, GiSixEyes } from 'react-icons/gi';
 import { RiTeamFill } from 'react-icons/ri';
 
 export default () =>
@@ -13,6 +13,7 @@ export default () =>
         .schemaType('websiteSettings')
         .title('Website Settings'),
       S.documentTypeListItem('news').icon(GiPartyFlags),
+      S.documentTypeListItem('video').icon(GiSixEyes),
       S.documentListItem().id('team').schemaType('team').icon(RiTeamFill).title('Team'),
       // S.documentTypeListItem('page'),
     ]);

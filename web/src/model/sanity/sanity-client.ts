@@ -8,6 +8,7 @@ import {
   PageInfo,
   SocialLink,
   TeamMember,
+  Video,
   WebsiteSettings,
 } from '~model/types';
 
@@ -84,6 +85,17 @@ export async function getTeam(): Promise<TeamMember[]> {
       lastName,
       role,
     }
+  `);
+}
+
+export async function getVideos(): Promise<Video[]> {
+  return client.fetch(/* groq */ `
+     *[_type == 'video'] | order(date desc) {
+      caption,
+      date,
+      name,
+      url,
+     }
   `);
 }
 

@@ -45,6 +45,13 @@ export interface TeamMember {
   role: string;
 }
 
+export interface Video {
+  caption: string;
+  date: string;
+  name: string;
+  url: string;
+}
+
 export interface WebsiteSettings {
   description: string;
   mainImage: SanityImageObject;

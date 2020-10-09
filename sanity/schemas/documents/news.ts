@@ -9,16 +9,19 @@ export const News: DocumentType<'textBlock'> = {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'date',
       title: 'Date',
       type: 'date',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'text',
       title: 'Content',
       type: 'textBlock',
+      validation: (Rule) => Rule.required(),
     },
   ],
   orderings: [

@@ -6,16 +6,18 @@ import {
   getLukaInfo,
   getNewsItems,
   getTeam,
+  getVideos,
   getWebsiteSettings,
   imageUrlFor,
 } from '~model/sanity/sanity-client';
-import { LukaInfo, NewsItem, PageInfo, TeamMember, WebsiteSettings } from '~model/types';
+import { LukaInfo, NewsItem, PageInfo, TeamMember, Video, WebsiteSettings } from '~model/types';
 import { AboutSection } from '~view/sections/about';
 import { ContactSection } from '~view/sections/contact';
 import { LandingSection } from '~view/sections/landing';
 import { MusicSection } from '~view/sections/music';
 import { NewsSection } from '~view/sections/news';
 import { ShowsSection } from '~view/sections/shows';
+import { VideoSection } from '~view/sections/video';
 
 /**
  * SECTION MAP
@@ -41,6 +43,10 @@ const sectionMap = new Map<string, (props: PropsWithPageInfo) => JSX.Element>([
     '31b57636-7533-48ec-87d7-78c89574f9c1',
     ({ pageInfo, team }) => <ContactSection id={pageInfo.name} team={team} />,
   ],
+  [
+    '1b49ee70-a1e3-467f-b89e-73a503ae9c7b',
+    ({ pageInfo, videos }) => <VideoSection id={pageInfo.name} videos={videos} />,
+  ],
 ]);
 
 /**
@@ -65,6 +71,7 @@ interface Props {
   lukaInfo: LukaInfo;
   newsItems: NewsItem[];
   team: TeamMember[];
+  videos: Video[];
   websiteSettings: WebsiteSettings;
 }
 
@@ -110,10 +117,11 @@ export default function Home(props: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const [lukaInfo, newsItems, team, websiteSettings] = await Promise.all([
+  const [lukaInfo, newsItems, team, videos, websiteSettings] = await Promise.all([
     getLukaInfo(),
     getNewsItems(),
     getTeam(),
+    getVideos(),
     getWebsiteSettings(),
   ]);
 
@@ -122,6 +130,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       lukaInfo,
       newsItems,
       team,
+      videos,
       websiteSettings,
     },
   };
