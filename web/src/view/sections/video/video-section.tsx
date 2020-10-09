@@ -23,7 +23,7 @@ export function VideoSection({ id, videos }: Props) {
           .filter(({ date }) => !isFuture(new Date(date)))
           .map(({ name, url }) => (
             <li key={`video-${name}`}>
-              <ReactPlayer height="203px" width="500px" url={url} />
+              <ReactPlayer height="203px" width="100%" url={url} />
             </li>
           ))}
       </ul>
