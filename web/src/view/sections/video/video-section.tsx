@@ -16,7 +16,7 @@ interface Props extends SectionProps {
 export function VideoSection({ id, videos }: Props) {
   return (
     <section className={s.videoSection} id={id}>
-      <Typography.SectionTitle>Video</Typography.SectionTitle>
+      <Typography.SectionTitle>Videos</Typography.SectionTitle>
 
       <ul>
         {videos
