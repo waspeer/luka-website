@@ -1,4 +1,3 @@
-import BlockContent from '@sanity/block-content-to-react';
 import { format, isFuture } from 'date-fns';
 
 import { SectionProps } from '../section';
@@ -6,6 +5,7 @@ import { SectionProps } from '../section';
 import s from './news-section.module.css';
 
 import { NewsItem } from '~model/types';
+import { BlockContent } from '~view/components/block-content';
 import { Typography } from '~view/components/typography';
 
 interface Props extends SectionProps {
@@ -24,7 +24,7 @@ export function NewsSection({ id, items }: Props) {
           {format(new Date(date), 'd.M.y')} - {title}
         </h3>
 
-        <BlockContent blocks={text} />
+        <BlockContent text={text} />
       </section>
     </section>
   );

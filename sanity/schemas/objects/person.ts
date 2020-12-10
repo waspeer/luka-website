@@ -6,6 +6,7 @@ export const Person: ObjectType = {
   type: 'object',
   fieldsets: [
     { name: 'name', title: 'Name', options: { columns: 2 } },
+    { name: 'company', title: 'Professional Information', options: { columns: 2 } },
     { name: 'contact', title: 'Contact' },
   ],
   fields: [
@@ -24,6 +25,19 @@ export const Person: ObjectType = {
       validation: (Rule) => Rule.required(),
     },
     {
+      fieldset: 'company',
+      name: 'companyName',
+      title: 'Company',
+      type: 'string',
+    },
+    {
+      fieldset: 'company',
+      name: 'companyUrl',
+      title: 'Company URL',
+      type: 'url',
+    },
+    {
+      fieldset: 'company',
       name: 'role',
       title: 'Role',
       type: 'string',
@@ -39,13 +53,14 @@ export const Person: ObjectType = {
   ],
   preview: {
     select: {
+      companyName: 'companyName',
       email: 'email',
       role: 'role',
       title: 'firstName',
     },
-    prepare: ({ email, role, title }) => ({
+    prepare: ({ companyName, email, role, title }) => ({
       title,
-      subtitle: `${role}, ${email}`,
+      subtitle: `${companyName ? `${companyName} | ` : ''}${role}, ${email}`,
     }),
   },
 };

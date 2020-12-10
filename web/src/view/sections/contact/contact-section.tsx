@@ -15,8 +15,15 @@ export function ContactSection({ id, team }: Props) {
       <Typography.SectionTitle>Contact</Typography.SectionTitle>
 
       <ul>
-        {team.map(({ email, firstName, lastName, role }) => (
+        {team.map(({ companyName, companyUrl, email, firstName, lastName, role }) => (
           <li key={`member-${email}`}>
+            {companyName && companyUrl && (
+              <a href={companyUrl} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>
+                {companyName}
+              </a>
+            )}
+            {companyName && !companyUrl && { companyName }}
+            {companyName && ' | '}
             {role}:{' '}
             <a href={`mailto:${email}`}>
               {firstName} {lastName}

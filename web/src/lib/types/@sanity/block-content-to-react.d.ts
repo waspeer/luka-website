@@ -8,11 +8,13 @@ declare module '@sanity/block-content-to-react' {
     mark: any;
   }
 
-  type Serializer<T extends Record<string, any> = any> = React.FunctionComponent<
+  export type MarkSerializerProps = BaseSerializerProps<T> & WithMark;
+
+  export type Serializer<T extends Record<string, any> = any> = React.FunctionComponent<
     BaseSerializerProps<T>
   >;
-  type MarkSerializer<T extends Record<string, any> = any> = React.FunctionComponent<
-    BaseSerializerProps<T> & WithMark
+  export type MarkSerializer<T extends Record<string, any> = any> = React.FunctionComponent<
+    MarkSerializerProps
   >;
 
   interface BlockContentProps {

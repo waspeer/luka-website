@@ -80,6 +80,8 @@ export async function getSocialLinks(): Promise<SocialLink[]> {
 export async function getTeam(): Promise<TeamMember[]> {
   return client.fetch(/* groq */ `
     *[_id == 'team'][0].members {
+      companyName,
+      companyUrl,
       email,
       firstName,
       lastName,

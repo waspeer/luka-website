@@ -9,5 +9,9 @@
     & h3 {
       @apply font-heading;
     }
+
+    & a {
+      @apply text-turquoise underline;
+    }
   }
 }

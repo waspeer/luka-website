@@ -39,6 +39,8 @@ export interface SocialLink {
 }
 
 export interface TeamMember {
+  companyName: string;
+  companyUrl: string;
   email: string;
   firstName: string;
   lastName: string;
