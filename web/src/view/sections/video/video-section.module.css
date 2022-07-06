@@ -1,5 +1,0 @@
-.videoSection {
-  & ul li {
-    @apply mb-4;
-  }
-}

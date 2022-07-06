@@ -1,0 +1,20 @@
+{
+  "extends": ["@waspeer/eslint-config", "plugin:astro/recommended"],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "extraFileExtensions": [".astro"],
+        "parser": "@typescript-eslint/parser"
+      }
+    }
+  ],
+  "rules": {
+    "import/exports-last": "off",
+    "import/group-exports": "off",
+    "prettier/prettier": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prevent-abbreviations": ["error", { "ignore": [".*Props"] }]
+  }
+}

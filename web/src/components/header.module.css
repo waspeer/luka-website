@@ -1,0 +1,99 @@
+.header {
+  @apply fixed top-0 w-full;
+  @apply bg-white;
+  @apply grid items-center;
+  @apply transition-all;
+  @apply px-4;
+  @apply z-10;
+
+  grid-template-rows: var(--header-size) 1fr;
+  grid-template-columns: 1fr 1fr;
+  height: var(--header-size);
+  transition-duration: var(--transition-duration);
+
+  &.menuOpened {
+    @apply h-screen;
+    @apply md:h-auto;
+  }
+
+  @apply md:px-8;
+  @apply md:h-auto;
+
+  @screen md {
+    grid-template-columns: min-content 1fr;
+  }
+
+  @screen lg {
+    grid-template-columns: 1fr max-content 1fr;
+  }
+
+  & h1 {
+    @apply justify-self-start;
+    @apply text-3xl;
+
+    top: -3px;
+  }
+
+  & button {
+    @apply font-heading;
+    @apply justify-self-end;
+    @apply md:hidden;
+
+    &:focus {
+      @apply outline-none;
+    }
+  }
+}
+
+.menu {
+  @apply hidden opacity-0;
+  @apply transition-opacity;
+  @apply max-h-full;
+  @apply self-stretch;
+  @apply overflow-scroll;
+  @apply pb-4;
+  @apply text-base lowercase;
+
+  grid-column: 1 / -1;
+  grid-template-rows: 1fr min-content;
+  transition-duration: var(--transition-duration);
+
+  @apply md:block md:opacity-100;
+  @apply md:p-0;
+  @apply md:col-auto;
+  @apply md:h-auto;
+  @apply md:text-sm;
+  @apply md:justify-self-end md:self-auto;
+
+  @apply lg:text-base lg:justify-self-auto;
+
+  & .mainNav {
+    @apply text-center;
+    @apply self-center;
+
+    & li {
+      @apply m-2;
+
+      &.divider::before {
+        @apply text-gray-300;
+
+        content: '/';
+      }
+
+      @apply md:inline-block;
+
+      & a:not(:hover) {
+        @apply bg-none;
+      }
+    }
+  }
+}
+
+.menu,
+.menuOpened .menu {
+  @apply md:block;
+}
+
+.menuOpened .menu {
+  @apply grid opacity-100;
+}

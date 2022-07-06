@@ -1,0 +1,115 @@
+---
+import { Icon } from 'astro-icon';
+import { paramCase } from 'change-case';
+
+import { Header } from '../components/header';
+import { getPages, getSocialLinks } from '../lib/sanity.js';
+
+const [pages, socialLinks] = await Promise.all([getPages(), getSocialLinks()]);
+
+function convertIconName(name: string) {
+  return `fa-brands:${paramCase(name.slice(2))}`;
+}
+---
+
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Luka</title>
+
+    <link rel='stylesheet' href='https://use.typekit.net/ctl4yhl.css' />
+
+    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+    <link rel='manifest' href='/site.webmanifest' />
+    <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
+    <meta name='msapplication-TileColor' content='#da532c' />
+    <meta name='theme-color' content='#ffffff' />
+
+    <slot name='head'></slot>
+  </head>
+  <body>
+    <div class='layout'>
+      <Header pages={pages} client:load>
+        <ul class='socials' slot='socialLinks'>
+          {socialLinks.map(({ url, name, iconName }) => (
+            <li>
+              <a href={url} target="_blank" rel="noreferrer" title={name}>
+                <Icon name={convertIconName(iconName)} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Header>
+      <main class='main'>
+        <slot></slot>
+      </main>
+    </div>
+
+    <style>
+      .layout {
+        --header-size: 4.25rem;
+        --transition-duration: 0.2s;
+
+        @screen md {
+          --header-size: 6.25rem;
+        }
+      }
+
+      .main {
+        @apply px-4 mx-auto;
+        @apply max-w-lg;
+
+        margin-top: var(--header-size);
+
+        @apply md:p-0;
+
+        & :global(section) {
+          @apply text-sm leading-normal;
+          @apply mb-16;
+
+          &::before {
+            display: block;
+            height: var(--header-size);
+            margin-top: calc(var(--header-size) * -1);
+            content: '';
+          }
+        }
+      }
+
+      .socials {
+        @apply flex justify-center;
+        @apply text-xl;
+        @apply mt-8;
+
+        @apply md:absolute;
+        @apply md:m-0;
+        @apply md:flex-col;
+
+        @screen md {
+          top: 100%;
+          left: 3.6rem;
+        }
+
+        & li {
+          @apply text-center;
+          @apply flex-1;
+
+          max-width: 3rem;
+        }
+
+        & li:not(:last-child) {
+          @apply md:mb-6;
+        }
+
+        & :global([astro-icon]) {
+          width: 1em;
+          height: 1em;
+        }
+      }
+    </style>
+  </body>
+</html>

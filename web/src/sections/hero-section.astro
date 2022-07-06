@@ -1,0 +1,84 @@
+---
+import type { CallToAction } from '../lib/types';
+
+import { imageUrlFor } from '../lib/sanity';
+
+export interface Properties {
+  ctas: CallToAction[];
+  mainImage: any;
+}
+
+const { ctas, mainImage } = Astro.props as Properties;
+const imgUrl = imageUrlFor(mainImage).width(1000).url();
+---
+
+<section id='landing'>
+  {imgUrl && <img alt="Luka" src={imgUrl} />}
+
+  <div class='ctas'>
+    {ctas.map(({ text, url }) => (
+      <a href={url} target="_blank" rel="noreferrer">
+        {text}
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-back {
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .ctas {
+    @apply flex flex-col items-center;
+    @apply py-8;
+
+    & a {
+      @apply relative;
+      @apply font-heading text-xl text-turquoise;
+      @apply p-3;
+      @apply leading-none;
+      @apply overflow-hidden;
+      @apply rounded;
+
+      &:not(:last-child) {
+        @apply mb-2;
+      }
+
+      &::before {
+        @apply absolute;
+
+        top: -600%;
+        left: -50%;
+        z-index: -10;
+        width: 200%;
+        height: 1200%;
+        background: url('/images/button-bg.jpg');
+        background-size: cover;
+        animation: spin 15s linear infinite;
+        content: '';
+      }
+
+      &::after {
+        @apply absolute;
+        @apply bg-white;
+        @apply rounded;
+
+        top: 4px;
+        right: 4px;
+        bottom: 4px;
+        left: 4px;
+        z-index: -10;
+        content: '';
+      }
+    }
+  }
+</style>

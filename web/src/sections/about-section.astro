@@ -1,0 +1,28 @@
+---
+import type { SectionProps } from '../lib/types';
+
+import BlockContent from '../components/block-content.astro';
+
+export interface Props extends SectionProps {
+  bio: any[];
+}
+
+const { bio, id } = Astro.props as Props;
+---
+
+<section class='about-section' id={id}>
+  <h2 class='section-heading'>About</h2>
+  <BlockContent blocks={bio} />
+</section>
+
+<style>
+  .about-section {
+    & :global(p) {
+      @apply mb-4;
+    }
+
+    & :global(a) {
+      @apply text-turquoise underline;
+    }
+  }
+</style>

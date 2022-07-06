@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
 
 import type { DataType, Validator, ValidatorFunction } from './common';
 import type { Field } from './field';
+import type { ReactNode } from 'react';
 
 export interface ObjectValidator extends Validator<ObjectValidator> {
   /**
@@ -102,11 +102,7 @@ export interface ObjectType<T extends string = ''> extends DataType {
     /**
      * Function to reformat the selected fields
      */
-    prepare?(selection: {
-      subtitle: any;
-      title: any;
-      [key: string]: any;
-    }): {
+    prepare?(selection: { subtitle: any; title: any; [key: string]: any }): {
       media?: ReactNode;
       subtitle?: string;
       title: string;

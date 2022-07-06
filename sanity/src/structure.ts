@@ -2,7 +2,7 @@ import S from '@sanity/desk-tool/structure-builder';
 import { GiSpermWhale, GiPartyFlags, GiBabyFace, GiSixEyes } from 'react-icons/gi';
 import { RiTeamFill } from 'react-icons/ri';
 
-export default () =>
+const structure = () =>
   S.list()
     .title('Content')
     .items([
@@ -17,3 +17,5 @@ export default () =>
       S.documentListItem().id('team').schemaType('team').icon(RiTeamFill).title('Team'),
       // S.documentTypeListItem('page'),
     ]);
+
+export default structure;

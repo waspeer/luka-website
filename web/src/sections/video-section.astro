@@ -1,0 +1,61 @@
+---
+import { isFuture } from 'date-fns';
+
+import type { SectionProps, Video } from '../lib/types';
+
+export interface Props extends SectionProps {
+  videos: Video[];
+}
+
+const { id, videos } = Astro.props as Props;
+
+function getUrlType(url: string) {
+  if (url.includes('youtube.com')) {
+    return 'youtube';
+  }
+
+  if (url.includes('vimeo.com')) {
+    return 'vimeo';
+  }
+
+  throw new Error(`Unable to render video url: ${url}`);
+}
+---
+
+<section class='video-section' id={id}>
+  <h2 class='section-heading'>Videos</h2>
+
+  <ul>
+    {videos
+      .filter(({ date }) => !isFuture(new Date(date)))
+      .map(async ({ url }) => {
+        const urlType = getUrlType(url)
+        const oembedUrl =
+          urlType === 'youtube'
+            ? `https://www.youtube.com/oembed?url=${url}&format=json`
+            : `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(url)}`
+
+        const oembed = await fetch(oembedUrl).then((response) => response.json())
+
+        if (!oembed.html) {
+          throw new Error('Unable to fetch youtube video info')
+        }
+
+        return <li set:html={oembed.html} />
+      })}
+  </ul>
+</section>
+
+<style>
+  .video-section {
+    & ul li {
+      @apply mb-4;
+
+      & :global(iframe) {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16 / 9;
+      }
+    }
+  }
+</style>

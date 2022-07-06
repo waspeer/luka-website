@@ -1,9 +1,0 @@
-.musicSection {
-  & ul {
-    @apply grid grid-cols-2 gap-2;
-
-    @screen md {
-      @apply grid-cols-3;
-    }
-  }
-}

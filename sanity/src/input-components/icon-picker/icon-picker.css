@@ -1,11 +1,11 @@
 .input {
-  composes: textInput from 'part:@sanity/base/theme/forms/text-input-style';
+  composes: textinput from 'part:@sanity/base/theme/forms/text-input-style';
 }
 
 .selection {
   display: block;
-  font-size: 0.8125rem;
   margin-top: 0.5rem;
+  font-size: 0.8125rem;
 }
 
 .selection svg {

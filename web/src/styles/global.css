@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-weight: normal;
+  font-family: 'Worcester Serial';
+  font-style: normal;
+  src: url('/fonts/softmaker_-_worcesterserial-heavy-webfont.woff2') format('woff2'),
+    url('/fonts/softmaker_-_worcesterserial-heavy-webfont.woff') format('woff');
+}
+
+body,
+html {
+  @apply font-body;
+}
+
+@keyframes pan-background {
+  0% {
+    background-position-x: 0%;
+  }
+
+  100% {
+    background-position-x: 200%;
+  }
+}
+
+.section-heading,
+.heading,
+.underlined {
+  padding-bottom: 4px;
+  background-image: url('/images/underline.jpg');
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  background-size: auto 4px;
+  animation: pan-background 40s infinite linear;
+  will-change: background-position;
+}
+
+.section-heading,
+.heading {
+  @apply relative;
+  @apply font-heading;
+
+  width: min-content;
+  line-height: 1.1 !important;
+}
+
+.section-heading {
+  @apply text-2xl;
+  @apply mb-2 mx-auto;
+}

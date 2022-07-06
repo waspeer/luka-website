@@ -1,5 +1,5 @@
-import { DataType, ValidatorFunction, Validator } from './common';
-import { Field } from './field';
+import type { DataType, ValidatorFunction, Validator } from './common';
+import type { Field } from './field';
 
 export type FileValidator = Validator<FileValidator>;
 

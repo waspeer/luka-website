@@ -15,7 +15,7 @@ import { TextBlock } from './objects/text-block';
 
 export default createSchema({
   name: 'default',
-  types: schemaTypes.concat([
+  types: [...schemaTypes, 
     // OBJECTS
     Button,
     LinkWithIcon,
@@ -30,5 +30,5 @@ export default createSchema({
     Team,
     Video,
     WebsiteSettings,
-  ]),
+  ],
 });

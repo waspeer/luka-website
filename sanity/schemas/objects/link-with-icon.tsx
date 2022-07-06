@@ -1,7 +1,8 @@
 import React from 'react';
 import * as icons from 'react-icons/fa';
 
-import { ObjectType } from '../../lib/data-types';
+import type { ObjectType } from '../../lib/data-types';
+
 import { IconPicker } from '../../src/input-components/icon-picker';
 
 export const LinkWithIcon: ObjectType = {

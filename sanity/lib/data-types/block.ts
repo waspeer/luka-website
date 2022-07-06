@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react';
 
 import type { DataType, Validator, ValidatorFunction } from './common';
 import type { Field } from './field';
+import type { ReactNode } from 'react';
 
 export type BlockValidator = Validator<BlockValidator>;
 
-interface BlockEditorProps {
+interface BlockEditorProperties {
   icon?: (() => ReactNode) | ReactNode;
   render?: ReactNode;
 }
@@ -24,7 +24,7 @@ export interface BlockType<T extends string = ''> extends DataType {
   styles?: {
     title: string;
     value: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote' | string;
-    blockEditor?: BlockEditorProps;
+    blockEditor?: BlockEditorProperties;
   }[];
 
   /**
@@ -44,9 +44,9 @@ export interface BlockType<T extends string = ''> extends DataType {
     decorators?: {
       title: string;
       value: 'strong' | 'em' | 'code' | 'underline' | 'strike-through' | string;
-      blockEditor?: BlockEditorProps;
+      blockEditor?: BlockEditorProperties;
     }[];
-    annotations?: (Field<T> & { blockEditor?: BlockEditorProps })[];
+    annotations?: (Field<T> & { blockEditor?: BlockEditorProperties })[];
   };
 
   /**

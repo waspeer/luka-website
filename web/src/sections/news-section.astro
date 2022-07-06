@@ -1,0 +1,46 @@
+---
+import { format, isFuture } from 'date-fns';
+
+import type { NewsItem, SectionProps } from '../lib/types';
+
+import BlockContent from '../components/block-content.astro';
+
+export interface Props extends SectionProps {
+  items: NewsItem[];
+}
+
+const { id, items } = Astro.props as Props;
+const { date, text, title } = items.find((item) => !isFuture(new Date(item.date)));
+---
+
+<section class='news-section' id={id}>
+  <h2 class='section-heading'>News</h2>
+
+  <section>
+    <h3>
+      {format(new Date(date), 'd.M.y')} - {title}
+    </h3>
+
+    <BlockContent blocks={text} />
+  </section>
+</section>
+
+<style>
+  .news-section {
+    & section {
+      @apply leading-6;
+
+      &:not(:last-child) {
+        @apply mb-2;
+      }
+
+      & h3 {
+        @apply font-heading;
+      }
+
+      & a {
+        @apply text-turquoise underline;
+      }
+    }
+  }
+</style>

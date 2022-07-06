@@ -1,6 +1,6 @@
 import { GiSpaceSuit } from 'react-icons/gi';
 
-import { DocumentType } from '../../lib/data-types';
+import type { DocumentType } from '../../lib/data-types';
 
 export const Team: DocumentType<'person'> = {
   name: 'team',

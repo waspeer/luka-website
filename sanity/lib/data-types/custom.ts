@@ -1,4 +1,4 @@
-import { DataType, Validator, ValidatorFunction } from './common';
+import type { DataType, Validator, ValidatorFunction } from './common';
 
 export type CustomTypeValidator = Validator<CustomTypeValidator>;
 

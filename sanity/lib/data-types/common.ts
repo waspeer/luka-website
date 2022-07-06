@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 type CustomRuleContext<
   P extends Record<string, any> = Record<string, any>,
-  D extends Record<string, any> = Record<string, any>
+  D extends Record<string, any> = Record<string, any>,
 > = {
   document: D;
   parent: P;

@@ -13,7 +13,7 @@ import * as icons from 'react-icons/fa';
 
 import styles from './icon-picker.css';
 
-interface IconPickerProps {
+interface IconPickerProperties {
   type: any;
   value: string;
   onChange: (value: string) => void;
@@ -22,7 +22,6 @@ interface IconPickerProps {
 const createPatchFrom = (value: string) => PatchEvent.from(value === '' ? unset() : set(value));
 
 const getResults = (term: string) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   return useMemo(
     () =>
       term.trim() === ''
@@ -36,51 +35,57 @@ const getResults = (term: string) => {
   );
 };
 
-export const IconPicker = forwardRef(({ type, value, onChange: pushChange }: IconPickerProps) => {
-  const [term, setTerm] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null);
+export const IconPicker = forwardRef(
+  ({ type, value, onChange: pushChange }: IconPickerProperties) => {
+    const [term, setTerm] = useState('');
+    const inputReference = useRef<HTMLInputElement>(null);
 
-  const results = getResults(term);
-  const SelectedIcon = icons[value as keyof typeof icons];
+    const results = getResults(term);
+    const SelectedIcon = icons[value as keyof typeof icons];
 
-  const handleChange = (newValue: string) => {
-    setTerm('');
-    pushChange(createPatchFrom(newValue));
-  };
+    const handleChange = (newValue: string) => {
+      setTerm('');
+      pushChange(createPatchFrom(newValue));
+    };
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.setAttribute('class', styles.input);
-    }
-  }, []);
+    useEffect(() => {
+      if (inputReference.current) {
+        inputReference.current.setAttribute('class', styles.input);
+      }
+    }, []);
 
-  return (
-    <FormField label={type.title} description={type.description}>
-      <Combobox aria-label="icon" onSelect={handleChange}>
-        <ComboboxInput value={term} onChange={(e) => setTerm(e.target.value)} ref={inputRef} />
+    return (
+      <FormField label={type.title} description={type.description}>
+        <Combobox aria-label="icon" onSelect={handleChange}>
+          <ComboboxInput
+            value={term}
+            onChange={(event) => setTerm(event.target.value)}
+            ref={inputReference}
+          />
 
-        {results && (
-          <ComboboxPopover portal={false}>
-            {results.length ? (
-              <ComboboxList>
-                {results.slice(0, 10).map(([iconName, Icon]) => (
-                  <ComboboxOption key={iconName} value={iconName}>
-                    <Icon style={{ fontSize: '1.1rem' }} />
-                  </ComboboxOption>
-                ))}
-              </ComboboxList>
-            ) : (
-              <span style={{ display: 'block', margin: 8 }}>No results found</span>
-            )}
-          </ComboboxPopover>
+          {results && (
+            <ComboboxPopover portal={false}>
+              {results.length > 0 ? (
+                <ComboboxList>
+                  {results.slice(0, 10).map(([iconName, Icon]) => (
+                    <ComboboxOption key={iconName} value={iconName}>
+                      <Icon style={{ fontSize: '1.1rem' }} />
+                    </ComboboxOption>
+                  ))}
+                </ComboboxList>
+              ) : (
+                <span style={{ display: 'block', margin: 8 }}>No results found</span>
+              )}
+            </ComboboxPopover>
+          )}
+        </Combobox>
+
+        {SelectedIcon && (
+          <span className={styles.selection}>
+            Selected icon: <SelectedIcon />
+          </span>
         )}
-      </Combobox>
-
-      {SelectedIcon && (
-        <span className={styles.selection}>
-          Selected icon: <SelectedIcon />
-        </span>
-      )}
-    </FormField>
-  );
-});
+      </FormField>
+    );
+  },
+);

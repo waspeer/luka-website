@@ -1,4 +1,4 @@
-import { DocumentType } from '../../lib/data-types';
+import type { DocumentType } from '../../lib/data-types';
 
 export const AboutLuka: DocumentType<'linkWithIcon' | 'textBlock' | 'release'> = {
   name: 'aboutLuka',

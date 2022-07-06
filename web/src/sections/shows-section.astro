@@ -1,0 +1,32 @@
+---
+import type { SectionProps } from '../lib/types';
+
+export type Props = SectionProps;
+
+const { id } = Astro.props as Props;
+---
+
+<section class='shows-section' id={id}>
+  <h2 class='section-heading'>Shows</h2>
+
+  <a
+    aria-label='Songkick Widget'
+    href='https://www.songkick.com/artists/8712383'
+    class='songkick-widget'
+    data-theme='light'
+    data-detect-style='true'
+    data-background-color='transparent'
+    data-locale='en'></a>
+</section>
+
+<script src='//widget.songkick.com/8712383/widget.js' async>
+
+</script>
+
+<style>
+  .shows-section {
+    & :global(div) {
+      margin-top: -40px;
+    }
+  }
+</style>

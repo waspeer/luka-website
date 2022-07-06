@@ -1,4 +1,4 @@
-import { ArrayType } from '../../lib/data-types';
+import type { ArrayType } from '../../lib/data-types';
 
 export const TextBlock: ArrayType = {
   name: 'textBlock',

@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "stylelint-config-astro",
+    "stylelint-config-standard",
+    "stylelint-config-rational-order",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "max-nesting-depth": [3, {}],
+    "selector-class-pattern": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "string-quotes": null,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"]
+      }
+    ]
+  }
+}

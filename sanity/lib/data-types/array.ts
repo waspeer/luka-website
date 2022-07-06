@@ -1,5 +1,5 @@
 import type { DataType, Validator, ValidatorFunction } from './common';
-import { Field } from './field';
+import type { Field } from './field';
 
 export interface ArrayValidator extends Validator<ArrayValidator> {
   /**

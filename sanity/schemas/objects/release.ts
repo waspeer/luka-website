@@ -1,4 +1,4 @@
-import { ObjectType } from '../../lib/data-types';
+import type { ObjectType } from '../../lib/data-types';
 
 export const Release: ObjectType = {
   name: 'release',

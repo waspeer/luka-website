@@ -1,0 +1,51 @@
+---
+import type { SectionProps, TeamMember } from '../lib/types';
+
+export interface Props extends SectionProps {
+  team: TeamMember[];
+}
+
+const { id, team } = Astro.props as Props;
+---
+
+<section class='contact-section' id={id}>
+  <h2 class='section-heading'>Contact</h2>
+
+  <ul>
+    {team.map(({ companyName, companyUrl, email, firstName, lastName, role }) => (
+      <li>
+        {companyName && companyUrl && (
+          <a href={companyUrl} target="_blank" rel="noreferrer" style="color: inherit">
+            {companyName}
+          </a>
+        )}
+        {companyName && !companyUrl && { companyName }}
+        {companyName && ' | '}
+        {role}:{' '}
+        <a href={`mailto:${email}`}>
+          {firstName} {lastName}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .contact-section {
+    & ul {
+      @apply text-center;
+
+      & svg {
+        @apply inline-block;
+        @apply align-middle;
+        @apply mr-2;
+
+        margin-top: -2px;
+      }
+
+      & a {
+        @apply text-turquoise underline;
+      }
+    }
+  }
+</style>

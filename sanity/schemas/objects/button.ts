@@ -1,4 +1,4 @@
-import { ObjectType } from '../../lib/data-types';
+import type { ObjectType } from '../../lib/data-types';
 
 export const Button: ObjectType = {
   name: 'button',
