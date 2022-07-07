@@ -5,10 +5,6 @@
   "license": "MIT",
   "author": "Wannes Salomé",
   "main": "index.js",
-  "workspaces": [
-    "sanity",
-    "web"
-  ],
   "scripts": {
     "dev": "run-p dev:* -l",
     "dev:sanity": "yarn workspace sanity dev",
