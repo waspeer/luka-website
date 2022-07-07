@@ -1,8 +1,7 @@
 import { GiSpaceSuit } from 'react-icons/gi';
+import { defineType } from 'sanity';
 
-import type { DocumentType } from '../../lib/data-types';
-
-export const Team: DocumentType<'person'> = {
+export const Team = defineType({
   name: 'team',
   title: 'Team',
   type: 'document',
@@ -19,4 +18,4 @@ export const Team: DocumentType<'person'> = {
       of: [{ type: 'person', icon: GiSpaceSuit }],
     },
   ],
-};
+});

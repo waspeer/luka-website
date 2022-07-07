@@ -1,14 +1,12 @@
-import React from 'react';
 import { RiPlayCircleLine } from 'react-icons/ri';
 import ReactPlayer from 'react-player';
-
-import type { DocumentType } from '../../lib/data-types';
+import { defineType } from 'sanity';
 
 const Preview = ({ value }: { value: { url: string } }) => {
   return <ReactPlayer url={value.url} />;
 };
 
-export const Video: DocumentType = {
+export const Video = defineType({
   name: 'video',
   type: 'document',
   title: 'Video',
@@ -41,18 +39,20 @@ export const Video: DocumentType = {
       description: 'Korte beschrijving',
     },
   ],
+  components: {
+    preview: Preview,
+  },
   preview: {
     select: {
       date: 'date',
       caption: 'caption',
       title: 'name',
     },
-    prepare: ({ caption, date, title }) => ({
+    prepare: ({ caption, date, title }: any) => ({
       media: RiPlayCircleLine,
       subtitle: `${date} - ${caption ?? 'no caption'}`,
       title,
     }),
-    component: Preview,
   },
   orderings: [
     {
@@ -61,4 +61,4 @@ export const Video: DocumentType = {
       by: [{ field: 'date', direction: 'desc' }],
     },
   ],
-};
+});

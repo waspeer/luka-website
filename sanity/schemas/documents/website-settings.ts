@@ -1,8 +1,7 @@
 import { GiAcousticMegaphone, GiSpermWhale } from 'react-icons/gi';
+import { defineType } from 'sanity';
 
-import type { DocumentType } from '../../lib/data-types';
-
-export const WebsiteSettings: DocumentType<'button' | 'page'> = {
+export const WebsiteSettings = defineType({
   name: 'websiteSettings',
   title: 'Website Settings',
   type: 'document',
@@ -38,4 +37,4 @@ export const WebsiteSettings: DocumentType<'button' | 'page'> = {
   preview: {
     prepare: () => ({ title: 'Website Settings', media: GiSpermWhale }),
   },
-};
+});

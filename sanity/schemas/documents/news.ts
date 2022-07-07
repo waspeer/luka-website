@@ -1,6 +1,6 @@
-import type { DocumentType } from '../../lib/data-types';
+import { defineType } from 'sanity';
 
-export const News: DocumentType<'textBlock'> = {
+export const News = defineType({
   name: 'news',
   title: 'News',
   type: 'document',
@@ -21,7 +21,6 @@ export const News: DocumentType<'textBlock'> = {
       name: 'text',
       title: 'Content',
       type: 'textBlock',
-      validation: (Rule) => Rule.required(),
     },
   ],
   orderings: [
@@ -31,4 +30,4 @@ export const News: DocumentType<'textBlock'> = {
       by: [{ field: 'date', direction: 'desc' }],
     },
   ],
-};
+});

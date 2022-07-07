@@ -1,8 +1,7 @@
 import { BsFileText, BsArrowUpRight } from 'react-icons/bs';
+import { defineType } from 'sanity';
 
-import type { DocumentType } from '../../lib/data-types';
-
-export const Page: DocumentType = {
+export const Page = defineType({
   name: 'page',
   title: 'Page',
   type: 'document',
@@ -31,9 +30,9 @@ export const Page: DocumentType = {
       isExternal: 'external',
       title: 'name',
     },
-    prepare: ({ isExternal, title }) => ({
+    prepare: ({ isExternal, title }: any) => ({
       media: isExternal ? BsArrowUpRight : BsFileText,
       title,
     }),
   },
-};
+});

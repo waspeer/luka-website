@@ -1,6 +1,6 @@
-import type { ObjectType } from '../../lib/data-types';
+import { defineType } from 'sanity';
 
-export const Release: ObjectType = {
+export const Release = defineType({
   name: 'release',
   title: 'Release',
   type: 'object',
@@ -31,4 +31,4 @@ export const Release: ObjectType = {
       validation: (Rule) => Rule.required(),
     },
   ],
-};
+});

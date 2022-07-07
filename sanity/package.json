@@ -1,39 +1,23 @@
 {
-  "name": "sanity",
-  "private": true,
+  "name": "@luka-website/sanity",
   "version": "1.0.0",
-  "description": "",
-  "main": "package.json",
-  "author": "Wannes Salomé <hello@wannessalome.nl>",
-  "license": "UNLICENSED",
-  "scripts": {
-    "build": "sanity build",
-    "dev": "sanity start",
-    "test": "sanity check"
-  },
+  "private": true,
   "keywords": [
     "sanity"
   ],
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-brands-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@reach/combobox": "^0.11.2",
-    "@sanity/base": "^2.0.1",
-    "@sanity/cli": "^2.0.1",
-    "@sanity/components": "^2.0.1",
-    "@sanity/core": "^2.0.1",
-    "@sanity/default-layout": "^2.0.1",
-    "@sanity/default-login": "^2.0.1",
-    "@sanity/desk-tool": "^2.0.1",
-    "@sanity/vision": "^2.0.1",
-    "prop-types": "^15.6",
-    "react": "^16.2",
-    "react-dom": "^16.2",
-    "react-icons": "^3.11.0",
-    "react-player": "^2.6.2"
+  "license": "UNLICENSED",
+  "main": "package.json",
+  "scripts": {
+    "build": "sanity build",
+    "dev": "sanity start"
   },
-  "devDependencies": {
-    "@types/react": "^16.9.50"
+  "dependencies": {
+    "@reach/combobox": "^0.17.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-icons": "^4.4.0",
+    "react-player": "^2.10.1",
+    "sanity": "dev-preview",
+    "styled-components": "^5.2.0"
   }
 }

@@ -1,6 +1,6 @@
-import type { ObjectType } from '../../lib/data-types';
+import { defineType } from 'sanity';
 
-export const Person: ObjectType = {
+export const Person = defineType({
   name: 'person',
   title: 'Person',
   type: 'object',
@@ -58,9 +58,9 @@ export const Person: ObjectType = {
       role: 'role',
       title: 'firstName',
     },
-    prepare: ({ companyName, email, role, title }) => ({
+    prepare: ({ companyName, email, role, title }: any) => ({
       title,
       subtitle: `${companyName ? `${companyName} | ` : ''}${role}, ${email}`,
     }),
   },
-};
+});

@@ -117,4 +117,6 @@ dist
 
 
 snipsnap.code-snippets
-web-old/*
+*-old/*
+
+.sanity/

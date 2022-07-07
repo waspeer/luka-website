@@ -1,11 +1,9 @@
-import React from 'react';
 import * as icons from 'react-icons/fa';
+import { defineType } from 'sanity';
 
-import type { ObjectType } from '../../lib/data-types';
+import { IconPicker } from '../input-components/icon-picker';
 
-import { IconPicker } from '../../src/input-components/icon-picker';
-
-export const LinkWithIcon: ObjectType = {
+export const LinkWithIcon = defineType({
   name: 'linkWithIcon',
   title: 'Link',
   type: 'object',
@@ -20,8 +18,10 @@ export const LinkWithIcon: ObjectType = {
       name: 'icon',
       title: 'Icon',
       type: 'string',
-      inputComponent: IconPicker,
       validation: (Rule) => Rule.required().error('Icon is required'),
+      components: {
+        input: IconPicker,
+      },
     },
     {
       name: 'url',
@@ -35,7 +35,7 @@ export const LinkWithIcon: ObjectType = {
       iconName: 'icon',
       title: 'name',
     },
-    prepare: ({ iconName, title }) => {
+    prepare: ({ iconName, title }: any) => {
       const Icon = icons[iconName as keyof typeof icons];
       const QuestionMark = icons.FaQuestion;
 
@@ -45,4 +45,4 @@ export const LinkWithIcon: ObjectType = {
       };
     },
   },
-};
+});

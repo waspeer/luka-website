@@ -1,6 +1,6 @@
-import type { DocumentType } from '../../lib/data-types';
+import { defineType } from 'sanity';
 
-export const AboutLuka: DocumentType<'linkWithIcon' | 'textBlock' | 'release'> = {
+export const AboutLuka = defineType({
   name: 'aboutLuka',
   title: 'About Luka',
   type: 'document',
@@ -44,4 +44,4 @@ export const AboutLuka: DocumentType<'linkWithIcon' | 'textBlock' | 'release'> =
       of: [{ type: 'linkWithIcon' }],
     },
   ],
-};
+});

@@ -1,6 +1,6 @@
-import type { ArrayType } from '../../lib/data-types';
+import { defineType } from 'sanity';
 
-export const TextBlock: ArrayType = {
+export const TextBlock = defineType({
   name: 'textBlock',
   title: 'Text',
   type: 'array',
@@ -20,4 +20,4 @@ export const TextBlock: ArrayType = {
       type: 'block',
     },
   ],
-};
+});

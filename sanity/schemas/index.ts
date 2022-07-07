@@ -1,6 +1,3 @@
-import schemaTypes from 'all:part:@sanity/base/schema-type';
-import createSchema from 'part:@sanity/base/schema-creator';
-
 import { AboutLuka } from './documents/about-luka';
 import { News } from './documents/news';
 import { Page } from './documents/page';
@@ -13,22 +10,19 @@ import { Person } from './objects/person';
 import { Release } from './objects/release';
 import { TextBlock } from './objects/text-block';
 
-export default createSchema({
-  name: 'default',
-  types: [...schemaTypes, 
-    // OBJECTS
-    Button,
-    LinkWithIcon,
-    Person,
-    Release,
-    TextBlock,
+export const schemaTypes = [
+  // OBJECTS
+  Button,
+  LinkWithIcon,
+  Person,
+  Release,
+  TextBlock,
 
-    // DOCUMENTS
-    AboutLuka,
-    News,
-    Page,
-    Team,
-    Video,
-    WebsiteSettings,
-  ],
-});
+  // DOCUMENTS
+  AboutLuka,
+  News,
+  Page,
+  Team,
+  Video,
+  WebsiteSettings,
+];

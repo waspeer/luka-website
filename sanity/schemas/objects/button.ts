@@ -1,6 +1,6 @@
-import type { ObjectType } from '../../lib/data-types';
+import { defineType } from 'sanity';
 
-export const Button: ObjectType = {
+export const Button = defineType({
   name: 'button',
   title: 'Button',
   type: 'object',
@@ -18,4 +18,4 @@ export const Button: ObjectType = {
       validation: (Rule) => Rule.required(),
     },
   ],
-};
+});
