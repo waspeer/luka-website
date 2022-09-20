@@ -1,7 +1,7 @@
 import { next } from '@vercel/edge';
 import sanityClient from 'picosanity';
 
-import { getEnvironmentVariable } from './src/lib/get-environment-variable';
+import { getEnvironmentVariable } from './src/lib/get-environment-variable.js';
 
 export const client = sanityClient({
   apiVersion: '2022-07-06',
