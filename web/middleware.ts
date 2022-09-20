@@ -1,12 +1,17 @@
 import { next } from '@vercel/edge';
 import sanityClient from 'picosanity';
 
-import { getEnvironmentVariable } from './src/lib/get-environment-variable.js';
+const PUBLIC_SANITY_DATASET = process.env.PUBLIC_SANITY_DATASET;
+const PUBLIC_SANITY_PROJECT_ID = process.env.PUBLIC_SANITY_PROJECT_ID;
+
+if (!(PUBLIC_SANITY_DATASET && PUBLIC_SANITY_PROJECT_ID)) {
+  throw new Error('PUBLIC_SANITY_DATASET and PUBLIC_SANITY_PROJECT_ID must be defined.');
+}
 
 export const client = sanityClient({
   apiVersion: '2022-07-06',
-  dataset: getEnvironmentVariable('PUBLIC_SANITY_DATASET'),
-  projectId: getEnvironmentVariable('PUBLIC_SANITY_PROJECT_ID'),
+  dataset: PUBLIC_SANITY_DATASET,
+  projectId: PUBLIC_SANITY_PROJECT_ID,
   useCdn: true,
 });
 
