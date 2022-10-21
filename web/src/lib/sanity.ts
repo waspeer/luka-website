@@ -1,5 +1,4 @@
 import sanityImage from '@sanity/image-url';
-import { Low, JSONFile } from 'lowdb';
 import sanityClient from 'picosanity';
 
 import type {
@@ -140,31 +139,8 @@ export async function getWebsiteSettings(): Promise<WebsiteSettings> {
 
 // ----------------- //
 
-let developmentCache: Low<Record<string, any>>;
-
-async function fetchQuery(key: string, query: string) {
-  if (getEnvironmentVariable('MODE', 'development') !== 'development') {
-    return client.fetch(query);
-  }
-
-  if (!developmentCache) {
-    developmentCache = new Low(new JSONFile('dev.cache.json'));
-  }
-
-  await developmentCache.read();
-
-  if (!developmentCache.data) {
-    developmentCache.data = {};
-    await developmentCache.write();
-  }
-
-  if (developmentCache.data[key]) {
-    return developmentCache.data[key];
-  }
-
+// Wrapper for potential caching
+async function fetchQuery(_key: string, query: string) {
   const result = await client.fetch(query);
-  developmentCache.data[key] = result;
-  await developmentCache.write();
-
   return result;
 }
