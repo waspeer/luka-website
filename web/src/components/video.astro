@@ -1,0 +1,43 @@
+---
+import 'plyr/dist/plyr.css';
+import getVideoId from 'get-video-id';
+
+export interface Props {
+  url: string;
+}
+
+const { url } = Astro.props as Props;
+const { id, service } = getVideoId(url);
+---
+
+<script>
+  import Plyr from 'plyr';
+
+  Plyr.setup('.plyr__video-embed');
+</script>
+
+{
+  service === 'vimeo' && (
+    <div class="plyr__video-embed">
+      <iframe
+        src={`https://player.vimeo.com/video/${id}?loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media`}
+        allowfullscreen
+        allowtransparency
+        allow="autoplay"
+      />
+    </div>
+  )
+}
+
+{
+  service === 'youtube' && (
+    <div class="plyr__video-embed">
+      <iframe
+        src={`https://www.youtube.com/embed/${id}?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1`}
+        allowfullscreen
+        allowtransparency
+        allow="autoplay"
+      />
+    </div>
+  )
+}
