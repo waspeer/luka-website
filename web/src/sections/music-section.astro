@@ -10,17 +10,19 @@ export interface Props extends SectionProps {
 const { id, releases } = Astro.props as Props;
 ---
 
-<section class='music-section' id={id}>
-  <h2 class='section-heading'>Music</h2>
+<section class="music-section" id={id}>
+  <h2 class="section-heading">Music</h2>
 
   <ul>
-    {releases.map(({ image, name, url }) => (
-      <li>
-        <a href={url} target="_blank" rel="noreferrer" title={name}>
-          <img alt={name} src={imageUrlFor(image).width(400).height(400).url()} />
-        </a>
-      </li>
-    ))}
+    {
+      releases.map(({ image, name, url }) => (
+        <li>
+          <a href={url} target="_blank" rel="noreferrer" title={name}>
+            <img alt={name} src={imageUrlFor(image).width(400).height(400).url()} />
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </section>
 

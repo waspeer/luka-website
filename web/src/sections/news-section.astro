@@ -13,8 +13,8 @@ const { id, items } = Astro.props as Props;
 const { date, text, title } = items.find((item) => !isFuture(new Date(item.date)));
 ---
 
-<section class='news-section' id={id}>
-  <h2 class='section-heading'>News</h2>
+<section class="news-section" id={id}>
+  <h2 class="section-heading">News</h2>
 
   <section>
     <h3>

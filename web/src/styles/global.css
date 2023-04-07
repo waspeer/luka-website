@@ -48,5 +48,5 @@ html {
 
 .section-heading {
   @apply text-2xl;
-  @apply mb-2 mx-auto;
+  @apply mx-auto mb-2;
 }

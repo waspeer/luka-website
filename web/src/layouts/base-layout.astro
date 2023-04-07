@@ -12,40 +12,42 @@ function convertIconName(name: string) {
 }
 ---
 
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luka</title>
 
-    <link rel='stylesheet' href='https://use.typekit.net/ctl4yhl.css' />
+    <link rel="stylesheet" href="https://use.typekit.net/ctl4yhl.css" />
 
-    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
-    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
-    <link rel='manifest' href='/site.webmanifest' />
-    <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
-    <meta name='msapplication-TileColor' content='#da532c' />
-    <meta name='theme-color' content='#ffffff' />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
 
-    <slot name='head'></slot>
+    <slot name="head" />
   </head>
   <body>
-    <div class='layout'>
+    <div class="layout">
       <Header pages={pages} client:load>
-        <ul class='socials' slot='socialLinks'>
-          {socialLinks.map(({ url, name, iconName }) => (
-            <li>
-              <a href={url} target="_blank" rel="noreferrer" title={name}>
-                <Icon name={convertIconName(iconName)} />
-              </a>
-            </li>
-          ))}
+        <ul class="socials" slot="socialLinks">
+          {
+            socialLinks.map(({ url, name, iconName }) => (
+              <li>
+                <a href={url} target="_blank" rel="noreferrer" title={name}>
+                  <Icon name={convertIconName(iconName)} />
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </Header>
-      <main class='main'>
-        <slot></slot>
+      <main class="main">
+        <slot />
       </main>
     </div>
 
@@ -60,7 +62,7 @@ function convertIconName(name: string) {
       }
 
       .main {
-        @apply px-4 mx-auto;
+        @apply mx-auto px-4;
         @apply max-w-lg;
 
         margin-top: var(--header-size);

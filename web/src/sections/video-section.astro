@@ -13,17 +13,19 @@ export interface Props extends SectionProps {
 const { id, videos } = Astro.props as Props;
 ---
 
-<section class='video-section' id={id}>
-  <h2 class='section-heading'>Videos</h2>
+<section class="video-section" id={id}>
+  <h2 class="section-heading">Videos</h2>
 
   <ul>
-    {videos
-      .filter(({ date }) => !isFuture(new Date(date)))
-      .map(({ url }) => (
-        <li>
-          <Video url={url} />  
-        </li>
-      ))}
+    {
+      videos
+        .filter(({ date }) => !isFuture(new Date(date)))
+        .map(({ url }) => (
+          <li>
+            <Video url={url} />
+          </li>
+        ))
+    }
   </ul>
 </section>
 

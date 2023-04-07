@@ -8,25 +8,27 @@ export interface Props extends SectionProps {
 const { id, team } = Astro.props as Props;
 ---
 
-<section class='contact-section' id={id}>
-  <h2 class='section-heading'>Contact</h2>
+<section class="contact-section" id={id}>
+  <h2 class="section-heading">Contact</h2>
 
   <ul>
-    {team.map(({ companyName, companyUrl, email, firstName, lastName, role }) => (
-      <li>
-        {companyName && companyUrl && (
-          <a href={companyUrl} target="_blank" rel="noreferrer" style="color: inherit">
-            {companyName}
+    {
+      team.map(({ companyName, companyUrl, email, firstName, lastName, role }) => (
+        <li>
+          {companyName && companyUrl && (
+            <a href={companyUrl} target="_blank" rel="noreferrer" style="color: inherit">
+              {companyName}
+            </a>
+          )}
+          {companyName && !companyUrl && { companyName }}
+          {companyName && ' | '}
+          {role}:{' '}
+          <a href={`mailto:${email}`}>
+            {firstName} {lastName}
           </a>
-        )}
-        {companyName && !companyUrl && { companyName }}
-        {companyName && ' | '}
-        {role}:{' '}
-        <a href={`mailto:${email}`}>
-          {firstName} {lastName}
-        </a>
-      </li>
-    ))}
+        </li>
+      ))
+    }
   </ul>
 </section>
 
@@ -44,7 +46,7 @@ const { id, team } = Astro.props as Props;
       }
 
       & a {
-        @apply text-turquoise underline;
+        @apply text-turquoise inline-block underline;
       }
     }
   }

@@ -5,7 +5,10 @@ const config = {
   printWidth: 100,
   endOfLine: 'auto',
 
-  plugins: [require.resolve('prettier-plugin-astro')],
+  plugins: [
+    require.resolve('prettier-plugin-astro'),
+    require.resolve('prettier-plugin-tailwindcss'),
+  ],
   overrides: [
     {
       files: '**/*.astro',

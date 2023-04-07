@@ -7,8 +7,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "run-p dev:* -l",
-    "dev:sanity": "yarn workspace sanity dev",
-    "dev:web": "yarn workspace web dev"
+    "dev:sanity": "pnpm --filter sanity dev",
+    "dev:web": "pnpm --filter web dev"
   },
   "devDependencies": {
     "@waspeer/eslint-config": "^1.6.1",
@@ -19,13 +19,13 @@
     "postcss-html": "^1.4.1",
     "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",
+    "prettier-plugin-tailwindcss": "^0.2.7",
     "stylelint": "^15.4.0",
     "stylelint-config-astro": "^1.0.4",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^32.0.0"
   },
   "volta": {
-    "node": "16.15.1",
-    "yarn": "1.22.19"
+    "node": "18.15.0"
   }
 }

@@ -12,15 +12,17 @@ const { ctas, mainImage } = Astro.props as Properties;
 const imgUrl = imageUrlFor(mainImage).width(1000).url();
 ---
 
-<section id='landing'>
+<section id="landing">
   {imgUrl && <img alt="Luka" src={imgUrl} />}
 
-  <div class='ctas'>
-    {ctas.map(({ text, url }) => (
-      <a href={url} target="_blank" rel="noreferrer">
-        {text}
-      </a>
-    ))}
+  <div class="ctas">
+    {
+      ctas.map(({ text, url }) => (
+        <a href={url} target="_blank" rel="noreferrer">
+          {text}
+        </a>
+      ))
+    }
   </div>
 </section>
 
@@ -43,7 +45,7 @@ const imgUrl = imageUrlFor(mainImage).width(1000).url();
 
     & a {
       @apply relative;
-      @apply font-heading text-xl text-turquoise text-center;
+      @apply font-heading text-turquoise text-center text-xl;
       @apply p-3;
       @apply leading-none;
       @apply overflow-hidden;
