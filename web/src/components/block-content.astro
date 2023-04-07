@@ -1,45 +1,32 @@
 ---
-import blocksToHtml from '@sanity/block-content-to-html';
+import { toHTML } from '@portabletext/to-html';
 
 export interface Props {
   blocks: any[];
 }
 
 const { blocks } = Astro.props as Props;
-const h = blocksToHtml.h;
-const serializers = {
-  container({ children }) {
-    return h('div', { className: '[ block-content ] [ stack ]' }, children);
-  },
-  marks: {
-    link({ children, mark }: any) {
-      return h(
-        'a',
-        {
-          href: mark.url,
-          rel: 'noreferrer',
-          target: '_blank',
-        },
-        children,
-      );
+const html = toHTML(blocks, {
+  components: {
+    marks: {
+      link({ children, value }) {
+        return /* html */ `<a href="${value.url}" rel="noreferrer" target="_blank">${children}</a>`;
+      },
     },
   },
-  types: {
-    block(properties) {
-      properties.children = h('span', { className: 'backlit' }, properties.children);
-      properties.serializers = blocksToHtml.defaultSerializers;
-      return blocksToHtml.defaultSerializers.block(properties);
-    },
-  },
-};
-
-const html = blocks ? blocksToHtml({ blocks, serializers }) : null;
+});
 ---
 
-<Fragment set:html={html} />
+<div class="block-content" set:html={html} />
 
-<style>
-  :global(.block-content) {
+<style is:global>
+  .block-content {
+    @apply flex flex-col gap-2;
+
     word-wrap: anywhere;
+
+    & a {
+      @apply underline;
+    }
   }
 </style>

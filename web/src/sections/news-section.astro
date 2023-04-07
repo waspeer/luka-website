@@ -29,6 +29,7 @@ const { date, text, title } = items.find((item) => !isFuture(new Date(item.date)
   .news-section {
     & section {
       @apply leading-6;
+      @apply flex flex-col gap-2;
 
       &:not(:last-child) {
         @apply mb-2;
