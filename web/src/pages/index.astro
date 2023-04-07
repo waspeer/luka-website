@@ -37,7 +37,7 @@ const { ctas, description, mainImage, pages } = websiteSettings;
 <BaseLayout>
   <SEO
     description={description}
-    title='Luka'
+    title="Luka"
     openGraph={{
       basic: {
         title: 'Luka',
@@ -56,27 +56,29 @@ const { ctas, description, mainImage, pages } = websiteSettings;
         height: OPEN_GRAPH_IMAGE_HEIGHT,
       },
     }}
-    slot='head'
+    slot="head"
   />
 
   <HeroSection ctas={ctas} mainImage={mainImage} />
 
-  {pages
-    .filter(({ external }) => !external)
-    .map((pageInfo) => {
-      switch (pageInfo.id) {
-        case '50b9016b-5e95-43bc-921b-9fee646cf7f0':
-          return <NewsSection id={pageInfo.name} items={newsItems} />
-        case '855ed417-34fa-4bb2-8bc7-3175d6f36cd5':
-          return <MusicSection id={pageInfo.name} releases={lukaInfo.discography} />
-        case 'e5b85f12-6666-4796-8d16-65933dc101b4':
-          return <AboutSection bio={lukaInfo.bio} id={pageInfo.name} />
-        case 'c02fb670-eefe-4829-be44-b2ba173b1e4a':
-          return <ShowsSection id={pageInfo.name} />
-        case '1b49ee70-a1e3-467f-b89e-73a503ae9c7b':
-          return <VideoSection id={pageInfo.name} videos={videos} />
-        case '31b57636-7533-48ec-87d7-78c89574f9c1':
-          return <ContactSection id={pageInfo.name} team={team} />
-      }
-    })}
+  {
+    pages
+      .filter(({ external }) => !external)
+      .map((pageInfo) => {
+        switch (pageInfo.id) {
+          case '50b9016b-5e95-43bc-921b-9fee646cf7f0':
+            return <NewsSection id={pageInfo.name} items={newsItems} />;
+          case '855ed417-34fa-4bb2-8bc7-3175d6f36cd5':
+            return <MusicSection id={pageInfo.name} releases={lukaInfo.discography} />;
+          case 'e5b85f12-6666-4796-8d16-65933dc101b4':
+            return <AboutSection bio={lukaInfo.bio} id={pageInfo.name} />;
+          case 'c02fb670-eefe-4829-be44-b2ba173b1e4a':
+            return <ShowsSection id={pageInfo.name} />;
+          case '1b49ee70-a1e3-467f-b89e-73a503ae9c7b':
+            return <VideoSection id={pageInfo.name} videos={videos} />;
+          case '31b57636-7533-48ec-87d7-78c89574f9c1':
+            return <ContactSection id={pageInfo.name} team={team} />;
+        }
+      })
+  }
 </BaseLayout>

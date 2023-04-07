@@ -2,8 +2,7 @@
   "extends": [
     "stylelint-config-astro",
     "stylelint-config-standard",
-    "stylelint-config-rational-order",
-    "stylelint-config-prettier"
+    "stylelint-config-rational-order"
   ],
   "rules": {
     "max-nesting-depth": [3, {}],

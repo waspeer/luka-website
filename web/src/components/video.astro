@@ -1,6 +1,6 @@
 ---
-import 'plyr/dist/plyr.css';
 import getVideoId from 'get-video-id';
+import 'plyr/dist/plyr.css';
 
 export interface Props {
   url: string;
@@ -11,8 +11,8 @@ const { id, service } = getVideoId(url);
 ---
 
 <script>
+  // eslint-disable-next-line import/newline-after-import
   import Plyr from 'plyr';
-
   Plyr.setup('.plyr__video-embed');
 </script>
 

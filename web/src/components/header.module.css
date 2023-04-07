@@ -64,7 +64,6 @@
   @apply md:h-auto;
   @apply md:text-sm;
   @apply md:justify-self-end md:self-auto;
-
   @apply lg:text-base lg:justify-self-auto;
 
   & .mainNav {

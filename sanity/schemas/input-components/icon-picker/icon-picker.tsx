@@ -5,12 +5,12 @@ import {
   ComboboxOption,
   ComboboxPopover,
 } from '@reach/combobox';
-import { TextInput, Text, Stack } from '@sanity/ui';
+import { Stack, Text, TextInput } from '@sanity/ui';
 import { useMemo, useState } from 'react';
 import * as icons from 'react-icons/fa';
-import { FormField, set, unset } from 'sanity/form';
+import { set, unset } from 'sanity';
 
-import type { InputProps } from 'sanity/form';
+import type { StringInputProps } from 'sanity';
 
 import '@reach/combobox/styles.css';
 
@@ -30,8 +30,8 @@ const getResults = (term: string) => {
   );
 };
 
-export function IconPicker(properties: InputProps) {
-  const { value, onChange: pushChange, schemaType } = properties;
+export function IconPicker(properties: StringInputProps) {
+  const { value, onChange: pushChange, elementProps } = properties;
 
   const [term, setTerm] = useState('');
 
@@ -44,38 +44,37 @@ export function IconPicker(properties: InputProps) {
   };
 
   return (
-    <FormField label={schemaType.title} description={schemaType.description}>
-      <Stack space={3}>
-        <Combobox aria-label="icon" onSelect={handleChange}>
-          <ComboboxInput
-            as={TextInput}
-            value={term}
-            onChange={(event: any) => setTerm(event.target.value)}
-          />
+    <Stack space={3}>
+      <Combobox aria-label="icon" onSelect={handleChange}>
+        <ComboboxInput
+          {...elementProps}
+          as={TextInput}
+          value={term}
+          onChange={(event: any) => setTerm(event.target.value)}
+        />
 
-          {results && (
-            <ComboboxPopover portal={false}>
-              {results.length > 0 ? (
-                <ComboboxList>
-                  {results.slice(0, 10).map(([iconName, Icon]) => (
-                    <ComboboxOption key={iconName} value={iconName}>
-                      <Icon style={{ fontSize: '1.1rem' }} />
-                    </ComboboxOption>
-                  ))}
-                </ComboboxList>
-              ) : (
-                <span style={{ display: 'block', margin: 8 }}>No results found</span>
-              )}
-            </ComboboxPopover>
-          )}
-        </Combobox>
-
-        {SelectedIcon && (
-          <Text size={1}>
-            Selected icon: <SelectedIcon />
-          </Text>
+        {results && (
+          <ComboboxPopover portal={false}>
+            {results.length > 0 ? (
+              <ComboboxList>
+                {results.slice(0, 10).map(([iconName, Icon]) => (
+                  <ComboboxOption key={iconName} value={iconName}>
+                    <Icon style={{ fontSize: '1.1rem' }} />
+                  </ComboboxOption>
+                ))}
+              </ComboboxList>
+            ) : (
+              <span style={{ display: 'block', margin: 8 }}>No results found</span>
+            )}
+          </ComboboxPopover>
         )}
-      </Stack>
-    </FormField>
+      </Combobox>
+
+      {SelectedIcon && (
+        <Text size={1}>
+          Selected icon: <SelectedIcon />
+        </Text>
+      )}
+    </Stack>
   );
 }

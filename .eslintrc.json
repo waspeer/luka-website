@@ -14,7 +14,6 @@
     "import/exports-last": "off",
     "import/group-exports": "off",
     "prettier/prettier": "off",
-    "unicorn/no-null": "off",
-    "unicorn/prevent-abbreviations": ["error", { "ignore": [".*Props"] }]
+    "unicorn/no-null": "off"
   }
 }

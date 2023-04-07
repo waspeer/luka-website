@@ -1,9 +1,0 @@
-{
-  "arrowParens": "always",
-  "astroAllowShorthand": false,
-  "astroSortOrder": "markup | styles",
-  "endOfLine": "auto",
-  "printWidth": 100,
-  "singleQuote": true,
-  "trailingComma": "all"
-}
