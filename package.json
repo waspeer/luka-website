@@ -28,9 +28,5 @@
   "volta": {
     "node": "16.15.1",
     "yarn": "1.22.19"
-  },
-  "dependencies": {
-    "get-video-id": "^3.6.5",
-    "plyr": "^3.7.8"
   }
 }
