@@ -124,3 +124,5 @@ snipsnap.code-snippets
 .vercel
 
 .astro/
+# Local Netlify folder
+.netlify

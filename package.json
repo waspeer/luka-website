@@ -4,8 +4,8 @@
   "private": true,
   "license": "MIT",
   "author": "Wannes Salomé",
-  "main": "index.js",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "run-p dev:* -l",
     "dev:sanity": "pnpm --filter sanity dev",
@@ -18,7 +18,8 @@
     "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.2.7"
   },
+  "packageManager": "pnpm@9.1.4",
   "volta": {
-    "node": "18.15.0"
+    "node": "20.14.0"
   }
 }

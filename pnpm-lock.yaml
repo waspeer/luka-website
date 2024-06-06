@@ -86,6 +86,9 @@ importers:
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
       get-video-id:
         specifier: ^4.1.5
         version: 4.1.5
@@ -2435,6 +2438,9 @@ packages:
   date-fns@2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
+
+  date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
   date-now@1.0.1:
     resolution: {integrity: sha1-u30IZDjevkGCpIX7PfP7+5nWFTw=}
@@ -8516,6 +8522,8 @@ snapshots:
   dataloader@2.2.2: {}
 
   date-fns@2.29.3: {}
+
+  date-fns@3.6.0: {}
 
   date-now@1.0.1: {}
 
