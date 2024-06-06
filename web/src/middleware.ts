@@ -2,6 +2,8 @@ import type { MiddlewareHandler } from 'astro';
 import { client } from './lib/sanity';
 
 export const onRequest: MiddlewareHandler = async (context, next) => {
+  console.log(context.url);
+
   // Handle the presskit route
   if (context.url.pathname === '/presskit') {
     const presskitUrlResponse = await client.fetch(/* groq */ `
