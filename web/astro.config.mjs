@@ -7,6 +7,6 @@ import icon from 'astro-icon';
 // https://astro.build/config
 export default defineConfig({
   integrations: [icon(), solidJs(), tailwind()],
-  output: 'server',
-  adapter: netlify(),
+  // output: 'server',
+  // adapter: netlify(),
 });
