@@ -1,13 +1,14 @@
 {
   "name": "web",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "check": "astro check",
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
