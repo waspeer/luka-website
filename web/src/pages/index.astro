@@ -19,8 +19,6 @@ import ShowsSection from '../sections/shows-section.astro';
 import VideoSection from '../sections/video-section.astro';
 import '../styles/global.css';
 
-Astro.response.headers.set('Cache-Control', 'public, s-max-age=60 stale-while-revalidate=604800');
-
 const OPEN_GRAPH_IMAGE_WIDTH = 1200;
 const OPEN_GRAPH_IMAGE_HEIGHT = 630;
 
