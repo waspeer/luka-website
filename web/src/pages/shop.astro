@@ -11,5 +11,5 @@ if (typeof webshopUrlResponse?.webshopUrl !== 'string') {
   return new Response('No webshop url found', { status: 404 });
 }
 
-return Response.redirect(webshopUrlResponse.webshopUrl);
+return Astro.redirect(webshopUrlResponse.webshopUrl);
 ---
