@@ -1,36 +1,31 @@
 {
-  "name": "@luka-website/web",
+  "name": "web",
+  "type": "module",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
-  },
-  "devDependencies": {
-    "@astrojs/sitemap": "^1.2.2",
-    "@astrojs/solid-js": "^2.1.0",
-    "@sanity/image-url": "^1.0.2",
-    "astro": "^2.2.0",
-    "astro-robots-txt": "^0.4.1",
-    "picosanity": "^4.0.0",
-    "postcss": "^8.4.21",
-    "postcss-import": "^15.1.0",
-    "postcss-nesting": "^11.2.2",
-    "postcss-preset-env": "^8.3.0",
-    "solid-js": "^1.7.2",
-    "tailwindcss": "^3.3.1"
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^3.2.2",
-    "@portabletext/to-html": "^2.0.0",
-    "@vercel/edge": "^0.3.1",
-    "astro-icon": "^0.8.0",
-    "astro-seo": "^0.7.2",
-    "change-case": "^4.1.2",
-    "date-fns": "^2.29.3",
-    "get-video-id": "^3.6.5",
-    "plyr": "^3.7.8"
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/solid-js": "^4.2.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@iconify-json/fa-brands": "^1.1.8",
+    "@portabletext/to-html": "^2.0.13",
+    "@sanity/image-url": "^1.0.2",
+    "@vercel/edge": "^1.1.1",
+    "astro": "^4.9.3",
+    "astro-icon": "^1.1.0",
+    "astro-seo": "^0.8.4",
+    "change-case": "^5.4.4",
+    "get-video-id": "^4.1.5",
+    "picosanity": "^4.1.1",
+    "plyr": "^3.7.8",
+    "solid-js": "^1.8.17",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.4.5"
   }
 }

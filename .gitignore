@@ -122,3 +122,5 @@ snipsnap.code-snippets
 .sanity/
 
 .vercel
+
+.astro/

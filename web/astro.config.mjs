@@ -1,21 +1,10 @@
-import sitemap from '@astrojs/sitemap';
-import solid from '@astrojs/solid-js';
-import vercel from '@astrojs/vercel/serverless';
-import robotsTxt from 'astro-robots-txt';
+import solidJs from "@astrojs/solid-js";
 import { defineConfig } from 'astro/config';
+import icon from "astro-icon";
+
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: vercel(),
-  integrations: [solid(), sitemap({ customPages: ['https://lisaluka.com'] }), robotsTxt()],
-  site: 'https://lisaluka.com',
-  vite: {
-    ssr: {
-      external: ['svgo'],
-    },
-  },
-  experimental: {
-    integrations: true,
-  },
+  integrations: [icon(), solidJs(), tailwind()]
 });

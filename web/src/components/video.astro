@@ -20,11 +20,12 @@ const { id, service } = getVideoId(url);
   service === 'vimeo' && (
     <div class="plyr__video-embed">
       <iframe
+        title="Video"
         src={`https://player.vimeo.com/video/${id}?loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media`}
         allowfullscreen
         allowtransparency
         allow="autoplay"
-      />
+        />
     </div>
   )
 }
@@ -33,6 +34,7 @@ const { id, service } = getVideoId(url);
   service === 'youtube' && (
     <div class="plyr__video-embed">
       <iframe
+        title="Video"
         src={`https://www.youtube.com/embed/${id}?origin=https://plyr.io&iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1`}
         allowfullscreen
         allowtransparency

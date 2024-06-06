@@ -1,11 +1,7 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "target": "ESNext",
-    "types": ["vite/client", "node"]
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   }
 }

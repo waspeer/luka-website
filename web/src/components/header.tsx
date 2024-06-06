@@ -1,7 +1,5 @@
 import { createSignal } from 'solid-js';
-
 import type { PageInfo } from '../lib/types';
-
 import s from './header.module.css';
 
 interface HeaderProperties {
@@ -9,7 +7,7 @@ interface HeaderProperties {
   socialLinks?: string;
 }
 
-export function Header({ pages, socialLinks }: HeaderProperties) {
+export function Header(props: HeaderProperties) {
   const [menuOpened, setMenuOpened] = createSignal(false);
 
   const toggleMenu = () => {
@@ -36,11 +34,11 @@ export function Header({ pages, socialLinks }: HeaderProperties) {
 
       <nav aria-labelledby="main-menu-button" class={s.menu}>
         <ul class={s.mainNav}>
-          {pages
-            .flatMap(({ external, name, title }) => [
+          {props.pages
+            .flatMap((props) => [
               <li>
-                <a class="underlined" href={`${external ? '/' : '#'}${name}`} onClick={closeMenu}>
-                  {title}
+                <a class="underlined" href={`${props.external ? '/' : '#'}${props.name}`} onClick={closeMenu}>
+                  {props.title}
                 </a>
               </li>,
               <li class={s.divider} />,
@@ -48,7 +46,7 @@ export function Header({ pages, socialLinks }: HeaderProperties) {
             .slice(0, -1)}
         </ul>
 
-        {socialLinks}
+        {props.socialLinks}
       </nav>
     </header>
   );

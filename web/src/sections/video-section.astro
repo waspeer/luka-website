@@ -1,10 +1,9 @@
 ---
 import { isFuture } from 'date-fns';
-
+import Video from '../components/video.astro';
 import type { SectionProps } from '../lib/types';
 import type { Video as VideoDocument } from '../lib/types';
 
-import Video from '../components/video.astro';
 
 export interface Props extends SectionProps {
   videos: VideoDocument[];

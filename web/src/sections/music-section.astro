@@ -1,7 +1,7 @@
 ---
+import { imageUrlFor } from '../lib/sanity';
 import type { Release, SectionProps } from '../lib/types';
 
-import { imageUrlFor } from '../lib/sanity';
 
 export interface Props extends SectionProps {
   releases: Release[];
@@ -30,10 +30,7 @@ const { id, releases } = Astro.props as Props;
   .music-section {
     & ul {
       @apply grid grid-cols-2 gap-2;
-
-      @screen md {
-        @apply grid-cols-3;
-      }
+      @apply md:grid-cols-3
     }
   }
 </style>

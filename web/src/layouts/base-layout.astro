@@ -1,14 +1,13 @@
 ---
-import { Icon } from 'astro-icon';
-import { paramCase } from 'change-case';
-
+import { Icon } from 'astro-icon/components';
+import { kebabCase } from 'change-case';
 import { Header } from '../components/header';
 import { getPages, getSocialLinks } from '../lib/sanity.js';
 
 const [pages, socialLinks] = await Promise.all([getPages(), getSocialLinks()]);
 
 function convertIconName(name: string) {
-  return `fa-brands:${paramCase(name.slice(2))}`;
+  return `fa-brands:${kebabCase(name.slice(2))}`;
 }
 ---
 

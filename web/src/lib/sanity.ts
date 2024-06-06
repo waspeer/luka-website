@@ -1,6 +1,7 @@
 import sanityImage from '@sanity/image-url';
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import sanityClient from 'picosanity';
-
+import { getEnvironmentVariable } from './get-environment-variable';
 import type {
   LukaInfo,
   NewsItem,
@@ -10,9 +11,6 @@ import type {
   Video,
   WebsiteSettings,
 } from './types';
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
-
-import { getEnvironmentVariable } from './get-environment-variable';
 
 export const client = sanityClient({
   apiVersion: '2022-07-06',
