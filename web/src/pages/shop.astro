@@ -1,0 +1,15 @@
+---
+import { client } from '../lib/sanity';
+
+const webshopUrlResponse = await client.fetch(/* groq */ `
+      *[_id == 'aboutLuka'][0] {
+        webshopUrl
+      }
+    `);
+
+if (typeof webshopUrlResponse?.webshopUrl !== 'string') {
+  return new Response('No webshop url found', { status: 404 });
+}
+
+return Response.redirect(webshopUrlResponse.webshopUrl);
+---

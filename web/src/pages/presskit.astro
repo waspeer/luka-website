@@ -1,0 +1,15 @@
+---
+import { client } from '../lib/sanity';
+
+const presskitUrlResponse = await client.fetch(/* groq */ `
+      *[_id == 'aboutLuka'][0] {
+        presskitUrl
+      }
+    `);
+
+if (typeof presskitUrlResponse?.presskitUrl !== 'string') {
+  return new Response('No presskit url found', { status: 404 });
+}
+
+return Response.redirect(presskitUrlResponse.presskitUrl);
+---
